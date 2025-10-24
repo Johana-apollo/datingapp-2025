@@ -22,10 +22,10 @@ namespace API.Controllers
         {
             var member = await context.Users.FindAsync(id);
 
-            if (member == null) return NotFound();
+            if (member == null)
+                return NotFound();
 
             return member;
-
         }
     }
 }
