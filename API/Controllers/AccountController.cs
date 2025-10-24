@@ -43,7 +43,7 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
         var user = await context.Users.SingleOrDefaultAsync(x => x.Email == loginDto.Email);
 
         if (user == null)
-            return Unauthorized("Invalif email adress");
+            return Unauthorized("Invalid email adress");
 
         using var hmac = new HMACSHA512(user.PasswordSalt);
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
